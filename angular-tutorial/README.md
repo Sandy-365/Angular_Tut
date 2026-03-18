@@ -57,3 +57,127 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
+
+
+
+
+# Angular Property Binding
+
+## Overview
+
+Property Binding in Angular allows you to bind values from the component (TypeScript) to the HTML template dynamically. It is a **one-way data binding** from the component to the view.
+
+---
+
+## What is Property Binding?
+
+Property Binding is used to set values of HTML element properties dynamically using Angular expressions.
+
+### Syntax:
+
+```
+[property]="expression"
+```
+
+Example:
+
+```
+<input [value]="username" />
+```
+
+---
+
+## Why Use Property Binding?
+
+* Keeps UI synchronized with component data
+* Enables dynamic updates
+* Improves maintainability
+* Avoids direct DOM manipulation
+
+---
+
+## Types of Property Binding
+
+### 1. Element Property Binding
+
+```
+<img [src]="imageUrl" />
+<button [disabled]="isDisabled">Click</button>
+```
+
+### 2. Class Binding
+
+```
+<p [class.error]="hasError">Error Message</p>
+```
+
+### 3. Style Binding
+
+```
+<p [style.color]="isError ? 'red' : 'green'">
+```
+
+---
+
+## Property Binding vs Attribute Binding
+
+| Property Binding          | Attribute Binding          |
+| ------------------------- | -------------------------- |
+| Works with DOM properties | Works with HTML attributes |
+| Dynamic updates           | Static or rarely updated   |
+| Example: `[value]`        | Example: `value="text"`    |
+
+---
+
+## Property Binding with Signals (Angular 16+)
+
+Signals provide reactive state management.
+
+Example:
+
+```
+username = signal('Sandeep');
+```
+
+Usage:
+
+```
+<input [value]="username()" />
+```
+
+---
+
+## Do’s and Don’ts
+
+### Do:
+
+* Use property binding for dynamic values
+* Keep logic inside the component
+* Use class/style binding for UI control
+
+### Don’t:
+
+* Don’t mix attribute and property binding incorrectly
+* Avoid heavy logic inside templates
+* Don’t manipulate DOM directly
+
+---
+
+## Common Interview Questions
+
+1. What is property binding in Angular?
+2. Difference between property binding and interpolation?
+3. Difference between attribute and property binding?
+4. How does Angular handle DOM updates?
+5. What is the role of signals in binding?
+
+---
+
+## Conclusion
+
+Property Binding is a core Angular concept that enables dynamic UI updates and clean separation between logic and presentation.
+
+---
