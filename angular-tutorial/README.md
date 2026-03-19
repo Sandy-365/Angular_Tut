@@ -181,3 +181,179 @@ Usage:
 Property Binding is a core Angular concept that enables dynamic UI updates and clean separation between logic and presentation.
 
 ---
+
+
+
+
+
+
+
+
+
+
+# Angular Event Binding
+
+## Overview
+
+Event Binding in Angular allows you to listen to DOM events (like click, input, submit) and execute code in your component. It is a **one-way binding from the view to the component**.
+
+---
+
+## What is Event Binding?
+
+Event Binding is used to handle user actions such as clicks, typing, mouse movements, etc., and respond to them in the component.
+
+### Syntax:
+
+```html
+(event)="handler()"
+```
+
+Example:
+
+```html
+<button (click)="onClick()">Click Me</button>
+```
+
+---
+
+## Why Use Event Binding?
+
+* Capture user interactions
+* Trigger component logic
+* Update application state
+* Build interactive UI
+
+---
+
+## Basic Syntax
+
+```html
+<button (click)="handleClick()">Click</button>
+```
+
+```ts
+handleClick() {
+  console.log('Button clicked');
+}
+```
+
+---
+
+## Simple Click Example
+
+```html
+<button (click)="increment()">Increment</button>
+<p>Count: {{ count }}</p>
+```
+
+```ts
+count = 0;
+
+increment() {
+  this.count++;
+}
+```
+
+---
+
+## Using $event
+
+`$event` gives access to the event object.
+
+```html
+<input (input)="onInput($event)" />
+```
+
+```ts
+onInput(event: any) {
+  console.log(event.target.value);
+}
+```
+
+---
+
+## Input Events
+
+```html
+<input (keyup)="onKeyUp($event)" placeholder="Type something" />
+```
+
+```ts
+onKeyUp(event: KeyboardEvent) {
+  console.log((event.target as HTMLInputElement).value);
+}
+```
+
+---
+
+## Form Submit Example
+
+```html
+<form (submit)="onSubmit($event)">
+  <input type="text" />
+  <button type="submit">Submit</button>
+</form>
+```
+
+```ts
+onSubmit(event: Event) {
+  event.preventDefault();
+  console.log('Form Submitted');
+}
+```
+
+---
+
+## Event Binding with Signals (Angular 16+)
+
+Signals allow reactive updates.
+
+```ts
+import { signal } from '@angular/core';
+
+count = signal(0);
+
+increment() {
+  this.count.update(value => value + 1);
+}
+```
+
+```html
+<button (click)="increment()">Increment</button>
+<p>{{ count() }}</p>
+```
+
+---
+
+## Do’s and Don’ts
+
+### Do:
+
+* Use event binding for user interactions
+* Keep business logic in the component
+* Use `$event` when needed
+
+### Don’t:
+
+* Don’t write complex logic inside templates
+* Avoid direct DOM manipulation
+* Don’t overuse `$event` when unnecessary
+
+---
+
+## Common Interview Questions
+
+1. What is event binding in Angular?
+2. Difference between event binding and property binding?
+3. What is `$event`?
+4. How does Angular handle events internally?
+5. What are signals and how are they used with events?
+
+---
+
+## Conclusion
+
+Event Binding is essential for handling user interaction in Angular applications. It enables communication from the view to the component and is a fundamental part of building dynamic and responsive UI.
+
+---
